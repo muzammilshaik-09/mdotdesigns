@@ -1,0 +1,105 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: linear-gradient(45deg, #ff4e50, #f9d423);
+    color: white;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    padding: 20px;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .input-area {
+    margin-bottom: 30px;
+  }
+  
+  input[type="file"],
+  input[type="text"] {
+    margin: 10px;
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #ff4e50;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #ff1c1c;
+  }
+  
+  .template {
+    margin: 20px auto;
+    padding: 8px;
+    width: 1080px; /* Template width */
+    height: 1350px; /* Template height */
+    max-width: 90%;
+    background: white;
+    border-radius: 10px;
+    color: black;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    padding-bottom:0px;
+  }
+  
+  .template .year {
+    width: 266px; /* Year image width */
+    height: 118px; /* Year image height */
+    position: absolute;
+    top: 10px;
+    right: -4px;
+  }
+  
+  .template .main-image {
+    width: 1046px; /* Main image width */
+    height: 864px; /* Main image height */
+    object-fit: cover;
+    border-radius: 10px;
+    margin: 20px auto 10px;
+  }
+  
+  .template .new-year {
+    width:509px; /* New Year image width */
+    height:238px; /* New Year image height */
+    margin: -135px auto 10px;
+  }
+  
+  .template p {
+    margin: 10px 0;
+    font-size: 1.5rem;
+  }
+  
+  .template .message {
+    padding: 20px;
+    font-size: 1.6rem;
+    line-height: 1.5;
+  }
+  
+  .template .footer img {
+    padding: 10px;
+    padding-top:85px;
+    padding-bottom: 0px;
+    width: 45%;
+    font-size: 0.8rem;
+  }
+  
+  .template .footer span {
+    color: #ff4e50;
+  }
+  
