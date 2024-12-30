@@ -73,7 +73,7 @@ body {
     border-radius: 10px;
     margin: 20px auto 10px;
   }
-  
+
   .template .new-year {
     width:509px; /* New Year image width */
     height:238px; /* New Year image height */
@@ -125,6 +125,7 @@ body {
     height: auto;
   }
 
+
   .template .new-year {
     width: 400px;
     height: 180px;
@@ -164,6 +165,7 @@ body {
     max-width: 800px;
     height: auto;
   }
+
 
   .template .new-year {
     width: 300px;
@@ -205,6 +207,7 @@ body {
     height: 220px;
     margin-top:10px;
   }
+
 
   .template .new-year {
     width: 200px;
