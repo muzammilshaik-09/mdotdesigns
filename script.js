@@ -26,52 +26,55 @@ function generateTemplate() {
     const template = document.getElementById("template");
     const mainImage = document.getElementById("userImage");
   
+    const canvas = document.createElement("canvas");
+    canvas.width = 1080; // Width of the template
+    canvas.height = 1350; // Height of the template
+    const ctx = canvas.getContext("2d");
+  
     // Load the main image
     const image = new Image();
     image.src = mainImage.src;
   
     image.onload = () => {
-      const templateWidth = 1080; // Template's original width
-      const templateHeight = 1350; // Template's original height
+      // Calculate the cropped area for object-fit: cover
+      const aspectRatioTemplate = 1046 / 864; // Main image width/height ratio
+      const aspectRatioImage = image.width / image.height;
   
-      const canvas = document.createElement("canvas");
-      canvas.width = templateWidth;
-      canvas.height = templateHeight;
-      const ctx = canvas.getContext("2d");
+      let cropWidth, cropHeight, cropX, cropY;
+      if (aspectRatioImage > aspectRatioTemplate) {
+        // Image is wider than the template's aspect ratio
+        cropHeight = image.height;
+        cropWidth = cropHeight * aspectRatioTemplate;
+        cropX = (image.width - cropWidth) / 2;
+        cropY = 0;
+      } else {
+        // Image is taller than the template's aspect ratio
+        cropWidth = image.width;
+        cropHeight = cropWidth / aspectRatioTemplate;
+        cropX = 0;
+        cropY = (image.height - cropHeight) / 2;
+      }
   
-      // Draw the template background
+      // Draw the cropped main image
+      ctx.drawImage(
+        image,
+        cropX,
+        cropY,
+        cropWidth,
+        cropHeight,
+        17, // X position on template canvas
+        80, // Y position on template canvas
+        1046, // Main image width on template
+        864 // Main image height on template
+      );
+  
+      // Render the rest of the template using html2canvas
       html2canvas(template, {
         useCORS: true,
-        backgroundColor: null, // Keep transparent background if needed
-        scale: 1,
+        backgroundColor: null,
+        ignoreElements: (element) => element.id === "userImage", // Ignore the placeholder
       }).then((templateCanvas) => {
         ctx.drawImage(templateCanvas, 0, 0);
-  
-        // Calculate cropping dimensions for the main image
-        const mainImageWidth = mainImage.offsetWidth;
-        const mainImageHeight = mainImage.offsetHeight;
-  
-        const scaleX = image.width / mainImageWidth;
-        const scaleY = image.height / mainImageHeight;
-  
-        const cropWidth = templateWidth * scaleX;
-        const cropHeight = (cropWidth * mainImageHeight) / mainImageWidth;
-  
-        const cropX = (image.width - cropWidth) / 2; // Center cropping horizontally
-        const cropY = (image.height - cropHeight) / 2; // Center cropping vertically
-  
-        // Draw the cropped main image on the canvas
-        ctx.drawImage(
-          image,
-          cropX,
-          cropY,
-          cropWidth,
-          cropHeight,
-          0,
-          0,
-          mainImageWidth,
-          mainImageHeight
-        );
   
         // Download the final template
         const finalImage = canvas.toDataURL("image/png");
