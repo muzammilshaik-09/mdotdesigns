@@ -32,8 +32,6 @@ function generateTemplate() {
   
         // Adjust the image cropping by simulating `object-fit: cover`
         mainImage.style.objectFit = "cover";
-        mainImage.style.width = "100%"; // Ensures it covers the parent width
-        mainImage.style.height = "100%"; // Ensures it covers the parent height
       },
     }).then((canvas) => {
       const link = document.createElement("a");
