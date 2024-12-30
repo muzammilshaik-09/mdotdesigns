@@ -25,9 +25,17 @@ function generateTemplate() {
   document.getElementById("downloadButton").addEventListener("click", () => {
     const template = document.getElementById("template");
   
-    html2canvas(template, { useCORS: true,width: 1080,
-      height: 1350,
-      scale: 1, }).then((canvas) => {
+    html2canvas(template, {
+      useCORS: true, // Ensures cross-origin images are handled correctly
+      onclone: (clonedDoc) => {
+        const mainImage = clonedDoc.getElementById("userImage");
+  
+        // Adjust the image cropping by simulating `object-fit: cover`
+        mainImage.style.objectFit = "cover";
+        mainImage.style.width = "100%"; // Ensures it covers the parent width
+        mainImage.style.height = "100%"; // Ensures it covers the parent height
+      },
+    }).then((canvas) => {
       const link = document.createElement("a");
       link.download = "NewYearTemplate.png";
       link.href = canvas.toDataURL("image/png");
