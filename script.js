@@ -17,38 +17,31 @@ function generateTemplate() {
       image.src = e.target.result;
 
       image.onload = () => {
-        // Crop the image based on the "cover" logic
+        // Crop the image based on width only
         const canvas = document.createElement("canvas");
         const context = canvas.getContext("2d");
 
-        const aspectRatioTemplate = 1046 / 864; // Template width/height
-        const aspectRatioImage = image.width / image.height;
+        const targetWidth = 1046; // Template's main image width
+        const targetHeight = 864; // Template's main image height
 
-        let cropWidth, cropHeight, cropX, cropY;
-        if (aspectRatioImage > aspectRatioTemplate) {
-          cropHeight = image.height;
-          cropWidth = cropHeight * aspectRatioTemplate;
-          cropX = (image.width - cropWidth) / 2;
-          cropY = 0;
-        } else {
-          cropWidth = image.width;
-          cropHeight = cropWidth / aspectRatioTemplate;
-          cropX = 0;
-          cropY = (image.height - cropHeight) / 2;
-        }
+        canvas.width = targetWidth;
+        canvas.height = targetHeight;
 
-        canvas.width = 1046; // Main image width in the template
-        canvas.height = 864; // Main image height in the template
+        const scaleFactor = targetHeight / image.height; // Scale by height to fit
+        const scaledWidth = image.width * scaleFactor;
+
+        const cropX = (scaledWidth - targetWidth) / 2; // Center the crop horizontally
+
         context.drawImage(
           image,
-          cropX,
-          cropY,
-          cropWidth,
-          cropHeight,
+          cropX / scaleFactor, // Adjust crop position based on scaling
+          0,
+          targetWidth / scaleFactor, // Only crop width
+          image.height, // Keep full height
           0,
           0,
-          canvas.width,
-          canvas.height
+          targetWidth,
+          targetHeight
         );
 
         // Replace the original userImage with the cropped version
@@ -71,6 +64,7 @@ document.getElementById("downloadButton").addEventListener("click", () => {
     link.click();
   });
 });
+
   
   document.getElementById("shareButton").addEventListener("click", () => {
     const template = document.getElementById("template");
