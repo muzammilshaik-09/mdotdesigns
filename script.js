@@ -14,6 +14,7 @@ function generateTemplate() {
       const reader = new FileReader();
       reader.onload = (e) => {
         userImage.src = e.target.result;
+        userImage.style.objectFit = "cover"
       };
       reader.readAsDataURL(file);
     } else {
@@ -24,7 +25,9 @@ function generateTemplate() {
   document.getElementById("downloadButton").addEventListener("click", () => {
     const template = document.getElementById("template");
   
-    html2canvas(template, { useCORS: true }).then((canvas) => {
+    html2canvas(template, { useCORS: true,width: 1080,
+      height: 1350,
+      scale: 2, }).then((canvas) => {
       const link = document.createElement("a");
       link.download = "NewYearTemplate.png";
       link.href = canvas.toDataURL("image/png");
