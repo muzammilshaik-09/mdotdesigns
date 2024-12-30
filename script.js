@@ -1,37 +1,76 @@
 function generateTemplate() {
-    const imageInput = document.getElementById("imageInput");
-    const nameInput = document.getElementById("nameInput");
-    const userImage = document.getElementById("userImage");
-    const userName = document.getElementById("userName");
-  
-    // Update name
-    const name = nameInput.value.trim();
-    userName.textContent = name ? name : "Your Name";
-  
-    // Update image
-    const file = imageInput.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        userImage.src = e.target.result;
-        userImage.style.objectFit = "cover"
+  const imageInput = document.getElementById("imageInput");
+  const nameInput = document.getElementById("nameInput");
+  const userImage = document.getElementById("userImage");
+  const userName = document.getElementById("userName");
+
+  // Update name
+  const name = nameInput.value.trim();
+  userName.textContent = name ? name : "Your Name";
+
+  // Update image
+  const file = imageInput.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const image = new Image();
+      image.src = e.target.result;
+
+      image.onload = () => {
+        // Crop the image based on the "cover" logic
+        const canvas = document.createElement("canvas");
+        const context = canvas.getContext("2d");
+
+        const aspectRatioTemplate = 1046 / 864; // Template width/height
+        const aspectRatioImage = image.width / image.height;
+
+        let cropWidth, cropHeight, cropX, cropY;
+        if (aspectRatioImage > aspectRatioTemplate) {
+          cropHeight = image.height;
+          cropWidth = cropHeight * aspectRatioTemplate;
+          cropX = (image.width - cropWidth) / 2;
+          cropY = 0;
+        } else {
+          cropWidth = image.width;
+          cropHeight = cropWidth / aspectRatioTemplate;
+          cropX = 0;
+          cropY = (image.height - cropHeight) / 2;
+        }
+
+        canvas.width = 1046; // Main image width in the template
+        canvas.height = 864; // Main image height in the template
+        context.drawImage(
+          image,
+          cropX,
+          cropY,
+          cropWidth,
+          cropHeight,
+          0,
+          0,
+          canvas.width,
+          canvas.height
+        );
+
+        // Replace the original userImage with the cropped version
+        userImage.src = canvas.toDataURL("image/png");
       };
-      reader.readAsDataURL(file);
-    } else {
-      userImage.src = "default.jpg"; // Default placeholder image
-    }
+    };
+    reader.readAsDataURL(file);
+  } else {
+    userImage.src = "default.jpg"; // Default placeholder image
   }
-  
-  document.getElementById("downloadButton").addEventListener("click", () => {
-    const template = document.getElementById("template");
-  
-    html2canvas(template, { useCORS: true }).then((canvas) => {
-      const link = document.createElement("a");
-      link.download = "NewYearTemplate.png";
-      link.href = canvas.toDataURL("image/png");
-      link.click();
-    });
+}
+
+document.getElementById("downloadButton").addEventListener("click", () => {
+  const template = document.getElementById("template");
+
+  html2canvas(template, { useCORS: true }).then((canvas) => {
+    const link = document.createElement("a");
+    link.download = "NewYearTemplate.png";
+    link.href = canvas.toDataURL("image/png");
+    link.click();
   });
+});
   
   document.getElementById("shareButton").addEventListener("click", () => {
     const template = document.getElementById("template");

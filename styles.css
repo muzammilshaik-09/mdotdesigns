@@ -83,12 +83,14 @@ body {
   .template p {
     margin: 10px 0;
     font-size: 1.5rem;
+    font-weight:bold;
   }
   
   .template .message {
     padding: 20px;
     font-size: 1.6rem;
     line-height: 1.5;
+    color:grey;
   }
   
   .template .footer img {
