@@ -27,7 +27,7 @@ function generateTemplate() {
   
     html2canvas(template, { useCORS: true,width: 1080,
       height: 1350,
-      scale: 2, }).then((canvas) => {
+      scale: 1, }).then((canvas) => {
       const link = document.createElement("a");
       link.download = "NewYearTemplate.png";
       link.href = canvas.toDataURL("image/png");
