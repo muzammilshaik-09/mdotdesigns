@@ -24,11 +24,7 @@ function generateTemplate() {
   document.getElementById("downloadButton").addEventListener("click", () => {
     const template = document.getElementById("template");
   
-    html2canvas(template, { useCORS: true,scale: 1,  // Prevents canvas scaling
-      width: template.offsetWidth,
-      height: template.offsetHeight,
-      x: window.scrollX,
-      y: window.scrollY }).then((canvas) => {
+    html2canvas(template, { useCORS: true }).then((canvas) => {
       const link = document.createElement("a");
       link.download = "NewYearTemplate.png";
       link.href = canvas.toDataURL("image/png");
