@@ -103,3 +103,131 @@ body {
     color: #ff4e50;
   }
   
+  
+/* Responsive Design for Tablets and Smaller Screens */
+@media (max-width: 1024px) {
+  .template {
+    width: 80%;
+    height: auto;
+    padding: 20px;
+    margin-top: 10px;
+  }
+
+  .template .year {
+    width: 200px;
+    height: 90px;
+    top: 15px;
+    right: 15px;
+  }
+
+  .template .main-image {
+    width: 90%;
+    height: auto;
+  }
+
+  .template .new-year {
+    width: 400px;
+    height: 180px;
+    margin: -100px auto 10px;
+  }
+
+  .template p {
+    font-size: 1.2rem;
+  }
+
+  .template .message {
+    font-size: 1.4rem;
+  }
+
+  .template .footer img {
+    width: 50%;
+  }
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+  .template {
+    width: 95%;
+    height: auto;
+    padding: 15px;
+  }
+
+  .template .year {
+    width: 150px;
+    height: 70px;
+    top: 10px;
+    right: 10px;
+  }
+
+  .template .main-image {
+    width: 90%;
+    max-width: 800px;
+    height: auto;
+  }
+
+  .template .new-year {
+    width: 300px;
+    height: 130px;
+    margin: -80px auto 10px;
+  }
+
+  .template p {
+    font-size: 1rem;
+  }
+
+  .template .message {
+    font-size: 1.2rem;
+  }
+
+  .template .footer img {
+    width: 60%;
+  }
+}
+
+/* Small Mobile View */
+@media (max-width: 480px) {
+  .template {
+    width: 100%;
+    height: auto;
+    padding: 0px;
+  }
+
+  .template .year {
+    width: 100px;
+    height: 45px;
+    top: 5px;
+    right: 5px;
+  }
+
+  .template .main-image {
+    width: 94%;
+    max-width: 500px;
+    height: 220px;
+    margin-top:10px;
+  }
+
+  .template .new-year {
+    width: 200px;
+    height: 90px;
+    margin: -50px auto 10px;
+  }
+
+  .template p {
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin: 0px;
+  }
+
+  .template .message {
+    font-size: 0.5rem;
+    padding-top:10px;
+    color:grey;
+  }
+
+  .template .footer img {
+    width: 50%;
+    margin-top:0px;
+    padding-top:10px;
+    height:auto;
+  }
+}
