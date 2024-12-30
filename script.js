@@ -24,14 +24,65 @@ function generateTemplate() {
   
   document.getElementById("downloadButton").addEventListener("click", () => {
     const template = document.getElementById("template");
+    const mainImage = document.getElementById("userImage");
   
-    html2canvas(template, { useCORS: true }).then((canvas) => {
-      const link = document.createElement("a");
-      link.download = "NewYearTemplate.png";
-      link.href = canvas.toDataURL("image/png");
-      link.click();
-    });
+    // Load the main image
+    const image = new Image();
+    image.src = mainImage.src;
+  
+    image.onload = () => {
+      const templateWidth = 1080; // Template's original width
+      const templateHeight = 1350; // Template's original height
+  
+      const canvas = document.createElement("canvas");
+      canvas.width = templateWidth;
+      canvas.height = templateHeight;
+      const ctx = canvas.getContext("2d");
+  
+      // Draw the template background
+      html2canvas(template, {
+        useCORS: true,
+        backgroundColor: null, // Keep transparent background if needed
+        scale: 1,
+      }).then((templateCanvas) => {
+        ctx.drawImage(templateCanvas, 0, 0);
+  
+        // Calculate cropping dimensions for the main image
+        const mainImageWidth = mainImage.offsetWidth;
+        const mainImageHeight = mainImage.offsetHeight;
+  
+        const scaleX = image.width / mainImageWidth;
+        const scaleY = image.height / mainImageHeight;
+  
+        const cropWidth = templateWidth * scaleX;
+        const cropHeight = (cropWidth * mainImageHeight) / mainImageWidth;
+  
+        const cropX = (image.width - cropWidth) / 2; // Center cropping horizontally
+        const cropY = (image.height - cropHeight) / 2; // Center cropping vertically
+  
+        // Draw the cropped main image on the canvas
+        ctx.drawImage(
+          image,
+          cropX,
+          cropY,
+          cropWidth,
+          cropHeight,
+          0,
+          0,
+          mainImageWidth,
+          mainImageHeight
+        );
+  
+        // Download the final template
+        const finalImage = canvas.toDataURL("image/png");
+        const link = document.createElement("a");
+        link.download = "NewYearTemplate.png";
+        link.href = finalImage;
+        link.click();
+      });
+    };
   });
+  
   
   document.getElementById("shareButton").addEventListener("click", () => {
     const template = document.getElementById("template");
