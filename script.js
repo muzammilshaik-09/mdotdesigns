@@ -3,10 +3,17 @@ function generateTemplate() {
   const nameInput = document.getElementById("nameInput");
   const userImage = document.getElementById("userImage");
   const userName = document.getElementById("userName");
-
+  const messageInput = document.getElementById("messageInput");
+  const messageElement = document.querySelector(".template .message");
   // Update name
   const name = nameInput.value.trim();
   userName.textContent = name ? name : "Your Name";
+
+  // Update message
+  const message = messageInput.value.trim();
+  messageElement.textContent = message
+    ? message
+    : "Here's to another year of amazing friendship, endless laughter, and countless unforgettable memories. Let's make 2025 even brighter together!";
 
   // Update image
   const file = imageInput.files[0];
@@ -61,6 +68,7 @@ function generateTemplate() {
   }
 }
 
+
 document.getElementById("downloadButton").addEventListener("click", () => {
   const template = document.getElementById("template");
 
@@ -72,7 +80,7 @@ document.getElementById("downloadButton").addEventListener("click", () => {
   });
 });
 
-  
+ 
   document.getElementById("shareButton").addEventListener("click", () => {
     const template = document.getElementById("template");
   
