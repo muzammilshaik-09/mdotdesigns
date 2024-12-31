@@ -82,32 +82,30 @@ document.getElementById("downloadButton").addEventListener("click", () => {
 
  
   document.getElementById("shareButton").addEventListener("click", () => {
-    const template = document.getElementById("template");
-  
-    html2canvas(template, { useCORS: true }).then((canvas) => {
-      canvas.toBlob((blob) => {
-        const file = new File([blob], "NewYearTemplate.png", { type: "image/png" });
-  
-        const text = `Check out this amazing New Year template I created! Let's celebrate together with beautiful memories. 🎉`;
-  
-        if (navigator.share) {
-          navigator
-            .share({
-              title: "Happy New Year Template",
-              text,
-              files: [file],
-            })
-            .then(() => console.log("Shared successfully!"))
-            .catch((error) => console.error("Error sharing:", error));
-        } else {
-          alert("Your browser does not support the Web Share API!");
-        }
-      });
+  const template = document.getElementById("template");
+
+  html2canvas(template, { useCORS: true }).then((canvas) => {
+    canvas.toBlob((blob) => {
+      const file = new File([blob], "NewYearTemplate.png", { type: "image/png" });
+
+      const text = `Check out this amazing New Year template I created! Let's celebrate together with beautiful memories. 🎉`;
+
+      if (navigator.share) {
+        const data = {
+          title: "Happy New Year Template",
+          text: `${text}\n\nClick the image below to view more!`,
+          files: [file],
+        };
+
+        navigator
+          .share(data)
+          .then(() => console.log("Shared successfully!"))
+          .catch((error) => console.error("Error sharing:", error));
+      } else {
+        alert("Your browser does not support the Web Share API!");
+      }
     });
   });
+});
 
-  function redirectChatGPT() {
-    window.location.href = "https://chatgpt.com";
-  }
-  
   
