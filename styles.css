@@ -25,21 +25,22 @@ body {
     margin: 10px;
     padding: 10px;
     font-size: 1rem;
-    font-weight: bold;
+    border-radius:4px;
+    border:none;
   }
   
   button {
     padding: 10px 20px;
     font-size: 1rem;
-    background-color: #ff4e50;
+    background-color: white;
     border: none;
-    color: white;
+    color: #0085ff;
     border-radius: 5px;
     cursor: pointer;
   }
   
   button:hover {
-    background-color: #ff1c1c;
+    background-color: rgb(227, 226, 226);
   }
   
   .template {
@@ -122,6 +123,11 @@ body {
     right: 15px;
   }
 
+  .mainlogo
+  {
+    width:85%;
+  }
+
   .template .main-image {
     width: 90%;
     height: auto;
@@ -153,6 +159,11 @@ body {
     width: 95%;
     height: auto;
     padding: 15px;
+  }
+
+  .mainlogo
+  {
+    width:75%;
   }
 
   .template .year {
@@ -196,6 +207,11 @@ body {
     padding: 0px;
   }
 
+  .mainlogo
+  {
+    width:75%;
+  }
+
   .template .year {
     width: 100px;
     height: 45px;
@@ -223,6 +239,9 @@ body {
     margin: 0px;
   }
 
+  button{
+    margin:10px;
+  }
   .template .message {
     font-size: 0.5rem;
     padding-top:10px;
