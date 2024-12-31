@@ -105,4 +105,9 @@ document.getElementById("downloadButton").addEventListener("click", () => {
       });
     });
   });
+
+  function redirectChatGPT() {
+    window.location.href = "https://chatgpt.com";
+  }
+  
   
