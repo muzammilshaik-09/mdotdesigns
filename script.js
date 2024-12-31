@@ -85,20 +85,27 @@ document.getElementById("downloadButton").addEventListener("click", () => {
   const template = document.getElementById("template");
 
   html2canvas(template, { useCORS: true }).then((canvas) => {
-    canvas.toBlob((blob) => {
-      const file = new File([blob], "NewYearTemplate.png", { type: "image/png" });
+    const context = canvas.getContext("2d");
 
-      const text = `Check out this amazing New Year template I created! Let's celebrate together with beautiful memories. 🎉`;
+    // Add text to the canvas
+    const text = "Check out this amazing New Year template I created! 🎉";
+    context.font = "20px Arial";
+    context.fillStyle = "white";
+    context.textAlign = "center";
+
+    // Position text on the canvas
+    context.fillText(text, canvas.width / 2, canvas.height - 50);
+
+    // Convert canvas to blob for sharing
+    canvas.toBlob((blob) => {
+      const file = new File([blob], "NewYearTemplateWithText.png", { type: "image/png" });
 
       if (navigator.share) {
-        const data = {
-          title: "Happy New Year Template",
-          text: `${text}\n\nClick the image below to view more!`,
-          files: [file],
-        };
-
         navigator
-          .share(data)
+          .share({
+            title: "Happy New Year Template",
+            files: [file],
+          })
           .then(() => console.log("Shared successfully!"))
           .catch((error) => console.error("Error sharing:", error));
       } else {
@@ -107,5 +114,11 @@ document.getElementById("downloadButton").addEventListener("click", () => {
     });
   });
 });
+
+
+function redirectChatGPT() {
+  window.location.href = "https://chatgpt.com";
+}
+
 
   
