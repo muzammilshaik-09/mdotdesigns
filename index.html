@@ -7,32 +7,53 @@
   <title>New Year Template</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-<body><center>
-  <div class="container">
-    <h1><img src="mdotblack.png" class="mainlogo"/></h1>
-    <h1>Create Your New Year Template</h1>
-    <div class="input-area">
-      <input type="file" id="imageInput" accept="image/*" />
-      <input type="text" id="nameInput" placeholder="Enter your name" />
-      <input type="text" id="messageInput" placeholder="Enter your message" />
-      <button onclick="generateTemplate()">Generate</button>
-      <button id="downloadButton">Download</button>
-      <button id="shareButton">Share</button>
-    </div>
-    <div id="template" class="template">
-      <img id="yearImage" class="year" src="year.png" alt="Year">
-      <img id="userImage"  class="main-image" src="default.jpg" alt="Main">
-      <img id="newYearImage" class="new-year" src="newyear.png" alt="Happy New Year">
-      <p id="userName">Your Name</p>
-      <div class="message">
-        Here's to another year of amazing friendship, endless laughter, and countless unforgettable memories. 
-        Let's make 2024 even brighter together!
+<body>
+  <center>
+    <div class="container">
+      <h1><img src="mdotblack.png" class="mainlogo" /></h1>
+      <h1>Create Your New Year Template</h1>
+      <div class="input-area">
+        <input type="file" id="imageInput" accept="image/*" />
+        <input type="text" id="nameInput" placeholder="Enter your name" />
+        <input
+          type="text"
+          id="messageInput"
+          placeholder="Enter your message (max 170 characters)"
+          maxlength="170"
+        />
+        <button onclick="redirectChatGPT()">ChatGPT</button>
+        <button onclick="generateTemplate()">Generate</button>
       </div>
-      <div class="footer">
-        <img src="footerbutton.png" alt="Footer Logo">
+      <div id="template" class="template">
+        <img id="yearImage" class="year" src="year.png" alt="Year" />
+        <img id="userImage" class="main-image" src="default.jpg" alt="Main" />
+        <img id="newYearImage" class="new-year" src="newyear.png" alt="Happy New Year" />
+        <p id="userName">Your Name</p>
+        <div class="message">
+          Here's to another year of amazing friendship, endless laughter, and countless
+          unforgettable memories. Let's make 2024 even brighter together!
+        </div>
+        <div class="footer">
+          <img src="footerbutton.png" alt="Footer Logo" />
+        </div>
+      </div>
+      <div class="bottom-section">
+        <button id="downloadButton">Download</button>
+        <button id="shareButton">Share</button>
+        <div class="social-icons">
+          <a href="https://instagram.com/someaccount" target="_blank">
+            <img src="instagram.png" alt="Instagram" />
+          </a>
+          <a href="https://linkedin.com/in/someaccount" target="_blank">
+            <img src="linkedin.png" alt="LinkedIn" />
+          </a>
+          <a href="https://twitter.com/someaccount" target="_blank">
+            <img src="twitter.png" alt="Twitter" />
+          </a>
+        </div>
       </div>
     </div>
-  </div></center>
+  </center>
 </body>
 <script src="script.js"></script>
 </html>
