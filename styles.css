@@ -70,6 +70,7 @@ body {
     width: 1046px; /* Main image width */
     height: 864px; /* Main image height */
     object-fit: cover;
+      cursor:grab;
     border-radius: 10px;
     margin: 20px auto 10px;
   }
