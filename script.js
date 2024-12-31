@@ -17,31 +17,38 @@ function generateTemplate() {
       image.src = e.target.result;
 
       image.onload = () => {
-        // Crop the image based on width only
+        // Crop the image based on the "cover" logic
         const canvas = document.createElement("canvas");
         const context = canvas.getContext("2d");
 
-        const targetWidth = 1046; // Template's main image width
-        const targetHeight = 864; // Template's main image height
+        const aspectRatioTemplate = 1046 / 864; // Template width/height
+        const aspectRatioImage = image.width / image.height;
 
-        canvas.width = targetWidth;
-        canvas.height = targetHeight;
+        let cropWidth, cropHeight, cropX, cropY;
+        if (aspectRatioImage > aspectRatioTemplate) {
+          cropHeight = image.height;
+          cropWidth = cropHeight * aspectRatioTemplate;
+          cropX = (image.width - cropWidth) / 2;
+          cropY = 0;
+        } else {
+          cropWidth = image.width;
+          cropHeight = cropWidth / aspectRatioTemplate;
+          cropX = 0;
+          cropY = (image.height - cropHeight) / 2;
+        }
 
-        const scaleFactor = targetHeight / image.height; // Scale by height to fit
-        const scaledWidth = image.width * scaleFactor;
-
-        const cropX = (scaledWidth - targetWidth) / 2; // Center the crop horizontally
-
+        canvas.width = 1046; // Main image width in the template
+        canvas.height = 864; // Main image height in the template
         context.drawImage(
           image,
-          cropX / scaleFactor, // Adjust crop position based on scaling
+          cropX,
+          cropY,
+          cropWidth,
+          cropHeight,
           0,
-          targetWidth / scaleFactor, // Only crop width
-          image.height, // Keep full height
           0,
-          0,
-          targetWidth,
-          targetHeight
+          canvas.width,
+          canvas.height
         );
 
         // Replace the original userImage with the cropped version
