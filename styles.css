@@ -126,7 +126,13 @@ body {
   .template .footer span {
     color: #ff4e50;
   }
-  
+
+.note
+{
+    color:white;
+    font-weight:bold;
+    padding:20px;
+    font-size:30px;
   
 /* Responsive Design for Tablets and Smaller Screens */
 @media (max-width: 1024px) {
