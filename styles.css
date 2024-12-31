@@ -6,7 +6,24 @@ body {
     margin: 0;
     padding: 0;
   }
+
+  .social-icons a img {
+    width: 50px;
+    height: 50px;
+    margin: 0 10px;
+    cursor: pointer;
+    padding-top:20px;
+  }
   
+  .social-icons a img:hover {
+    opacity: 0.8;
+  }
+  
+
+  .bottom-section {
+    margin-top: 30px;
+  }
+
   .container {
     padding: 20px;
   }
@@ -85,6 +102,7 @@ body {
     margin: 10px 0;
     font-size: 1.5rem;
     font-weight:bold;
+    font-family: "poppins";
   }
   
   .template .message {
@@ -92,6 +110,7 @@ body {
     font-size: 1.6rem;
     line-height: 1.5;
     color:grey;
+    font-family: "poppins";
   }
   
   .template .footer img {
@@ -109,6 +128,25 @@ body {
   
 /* Responsive Design for Tablets and Smaller Screens */
 @media (max-width: 1024px) {
+
+  .social-icons a img {
+    width: 40px;
+    height: 40px;
+    margin: 0 10px;
+    cursor: pointer;
+    padding-top:16px;
+  }
+  
+  .social-icons a img:hover {
+    opacity: 0.8;
+  }
+  
+
+  .bottom-section {
+    margin-top: 20px;
+  }
+
+
   .template {
     width: 80%;
     height: auto;
@@ -155,6 +193,24 @@ body {
 
 /* Mobile View */
 @media (max-width: 768px) {
+
+  .social-icons a img {
+    width: 35px;
+    height: 35px;
+    margin: 0 10px;
+    cursor: pointer;
+    padding-top:16px;
+  }
+  
+  .social-icons a img:hover {
+    opacity: 0.8;
+  }
+  
+
+  .bottom-section {
+    margin-top: 20px;
+  }
+
   .template {
     width: 95%;
     height: auto;
@@ -201,6 +257,24 @@ body {
 
 /* Small Mobile View */
 @media (max-width: 480px) {
+
+  .social-icons a img {
+    width: 35px;
+    height: 35px;
+    margin: 0 10px;
+    cursor: pointer;
+    padding-top:16px;
+  }
+  
+  .social-icons a img:hover {
+    opacity: 0.8;
+  }
+  
+
+  .bottom-section {
+    margin-top: 20px;
+  }
+
   .template {
     width: 100%;
     height: auto;
@@ -213,10 +287,10 @@ body {
   }
 
   .template .year {
-    width: 100px;
-    height: 45px;
+    width: 90px;
+    height: 35px;
     top: 5px;
-    right: 5px;
+    right: 3px;
   }
 
   .template .main-image {
@@ -228,8 +302,8 @@ body {
 
 
   .template .new-year {
-    width: 200px;
-    height: 90px;
+    width: 170px;
+    height: 60px;
     margin: -50px auto 10px;
   }
 
