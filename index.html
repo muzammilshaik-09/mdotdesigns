@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-  <title>New Year Template</title>
+  <title>MDOTDESIGNS</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -12,6 +12,9 @@
     <div class="container">
       <h1><img src="mdotblack.png" class="mainlogo" /></h1>
       <h1>Create Your New Year Template</h1>
+       <div class="note">
+        <p>Please upload horizontal images for optimal results.</p>
+      </div>
       <div class="input-area">
         <input type="file" id="imageInput" accept="image/*" />
         <input type="text" id="nameInput" placeholder="Enter your name" />
@@ -21,7 +24,7 @@
           placeholder="Enter your message (max 170 characters)"
           maxlength="170"
         />
-        <button onclick="redirectChatGPT()">ChatGPT</button>
+        <button onclick="redirectChatGPT()" target="_blank">ChatGPT</button>
         <button onclick="generateTemplate()">Generate</button>
       </div>
       <div id="template" class="template">
